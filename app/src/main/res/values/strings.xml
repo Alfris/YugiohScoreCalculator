@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Yugioh Score Calculator</string>
+    <string name="create_btn_label">Create game</string>
+    <string name="history_btn_label">Match history</string>
+    <string name="player_names_label">Enter player names</string>
+    <string name="player1_label">Player 1</string>
+    <string name="player2_label">Player 2</string>
+    <string name="start_btn_label">Start</string>
+    <string name="history_label">Match history</string>
+    <string name="coin_flip_btn_label">Coin flip</string>
+    <string name="dice_roll_btn_label">Dice roll</string>
+    <string name="player_name_ex">example</string>
+    <string name="player1_score">8000</string>
+    <string name="player2_score">8000</string>
+    <string name="add_btn_label">+</string>
+    <string name="subtract_btn_label">-</string>
+    <string name="empty_hint"></string>
+    <string name="roll_desc">temporary dice roll picture</string>
+    <string name="coin_desc">temporary coin toss picture</string>
+    <string name="calc_desc">temporary calculator picture</string>
+    <string name="name_hint">Name</string>
+    <string name="about_btn_label">About</string>
+    <string name="about_label">About</string>
+    <string name="about_textt">Yugioh Score Calculator is made by KTU students Alfridas Bruzdeilinas and Andrius Leksas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
