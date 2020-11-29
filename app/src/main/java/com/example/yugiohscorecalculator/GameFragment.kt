@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.room.Room
 import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment(), View.OnClickListener {
@@ -20,6 +21,8 @@ class GameFragment : Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         player1 = arguments!!.getString("player1")!!
         player2= arguments!!.getString("player2")!!
+
+        var db = Room.databaseBuilder(this.applicationContext, AppDatabase::class.java, "database.db")
     }
 
     override fun onCreateView(

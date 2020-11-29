@@ -1,0 +1,20 @@
+package com.example.yugiohscorecalculator
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+
+@Dao
+interface MatchDao
+{
+    @Insert
+    fun insert(match: Match)
+
+    @Query("SELECT * FROM `Match`")
+    fun getAll() : List<Match>
+
+    @Query("Select * FROM `Match` WHERE mid = (:matchId)")
+    fun getById(matchId: Int) : Match
+
+
+}
