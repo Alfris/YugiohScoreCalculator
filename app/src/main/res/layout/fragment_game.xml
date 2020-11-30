@@ -82,11 +82,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/player1_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
-        android:text="@string/player1_score"
         android:textColor="@android:color/black"
         android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,12 +94,11 @@
         app:layout_constraintTop_toBottomOf="@+id/player1_text" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/player2_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:rotation="180"
-        android:text="@string/player2_score"
         android:textColor="@android:color/black"
         android:textSize="64sp"
         app:layout_constraintBottom_toTopOf="@+id/player2_text"
@@ -116,8 +114,8 @@
         android:text="@string/subtract_btn_label"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/add_btn"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/player1_score" />
+
 
     <Button
         android:id="@+id/subtract_btn2"
@@ -126,10 +124,8 @@
         android:layout_marginBottom="32dp"
         android:text="@string/subtract_btn_label"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/add_btn2" />
+        app:layout_constraintBottom_toTopOf="@+id/player2_score"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/add_btn2"
@@ -138,9 +134,7 @@
         android:layout_marginBottom="32dp"
         android:text="@string/add_btn_label"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintEnd_toStartOf="@+id/subtract_btn2"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/player2_score"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -150,13 +144,11 @@
         android:layout_marginTop="32dp"
         android:text="@string/add_btn_label"
         android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/subtract_btn"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/player1_score" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/reset_point_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -166,5 +158,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/input_number"
+        android:layout_width="110dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="118dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/subtract_btn"
+        app:layout_constraintStart_toEndOf="@+id/add_btn" />
+
+    <Button
+        android:id="@+id/test_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/player2_text"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

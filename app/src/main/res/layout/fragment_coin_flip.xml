@@ -7,13 +7,15 @@
     tools:context=".CoinFlipFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/coin_temp"
+        android:id="@+id/coin_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/roll_desc"
+        android:src="@drawable/heads"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/coin_desc" />
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

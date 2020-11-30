@@ -45,18 +45,6 @@
         <action
             android:id="@+id/action_gameFragment_to_diceRollFragment"
             app:destination="@id/diceRollFragment" />
-        <action
-            android:id="@+id/action_gameFragment_to_addScoreFragmentP1"
-            app:destination="@id/addScoreFragmentP1" />
-        <action
-            android:id="@+id/action_gameFragment_to_addScoreFragmentP2"
-            app:destination="@id/addScoreFragmentP2" />
-        <action
-            android:id="@+id/action_gameFragment_to_subtractScoreFragmentP1"
-            app:destination="@id/subtractScoreFragmentP1" />
-        <action
-            android:id="@+id/action_gameFragment_to_subtractScoreFragmentP2"
-            app:destination="@id/subtractScoreFragmentP2" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -67,32 +55,20 @@
         android:id="@+id/diceRollFragment"
         android:name="com.example.yugiohscorecalculator.DiceRollFragment"
         android:label="fragment_dice_roll"
-        tools:layout="@layout/fragment_dice_roll" />
+        tools:layout="@layout/fragment_dice_roll" >
+        <action
+            android:id="@+id/action_diceRollFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/coinFlipFragment"
         android:name="com.example.yugiohscorecalculator.CoinFlipFragment"
         android:label="fragment_coin_flip"
-        tools:layout="@layout/fragment_coin_flip" />
-    <fragment
-        android:id="@+id/addScoreFragmentP1"
-        android:name="com.example.yugiohscorecalculator.AddScoreFragmentP1"
-        android:label="fragment_add_score_p1"
-        tools:layout="@layout/fragment_add_score_p1" />
-    <fragment
-        android:id="@+id/addScoreFragmentP2"
-        android:name="com.example.yugiohscorecalculator.AddScoreFragmentP2"
-        android:label="fragment_add_score_p2"
-        tools:layout="@layout/fragment_add_score_p2" />
-    <fragment
-        android:id="@+id/subtractScoreFragmentP1"
-        android:name="com.example.yugiohscorecalculator.SubtractScoreFragmentP1"
-        android:label="fragment_subtract_score_p1"
-        tools:layout="@layout/fragment_subtract_score_p1" />
-    <fragment
-        android:id="@+id/subtractScoreFragmentP2"
-        android:name="com.example.yugiohscorecalculator.SubtractScoreFragmentP2"
-        android:label="fragment_subtract_score_p2"
-        tools:layout="@layout/fragment_subtract_score_p2" />
+        tools:layout="@layout/fragment_coin_flip" >
+        <action
+            android:id="@+id/action_coinFlipFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.yugiohscorecalculator.AboutFragment"
