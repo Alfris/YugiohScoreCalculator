@@ -18,5 +18,8 @@ interface MatchDao
     @Query("Select * FROM `Match` WHERE mid = (:matchId)")
     fun getById(matchId: Int) : Single<Match>
 
+    //@Query("DELETE FROM `Match`")
+    //fun deleteAll(): Completable
+
 
 }

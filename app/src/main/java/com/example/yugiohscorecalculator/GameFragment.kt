@@ -1,6 +1,7 @@
 package com.example.yugiohscorecalculator
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_create_game.*
 import kotlinx.android.synthetic.main.fragment_game.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,11 +41,6 @@ class GameFragment : Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         player1 = arguments!!.getString("player1")!!
         player2= arguments!!.getString("player2")!!
-
-        db = AppDatabase.getAppDatabase(this.activity!!.applicationContext)
-
-        data = mutableListOf()
-
     }
 
     override fun onCreateView(
@@ -74,39 +71,14 @@ class GameFragment : Fragment(), View.OnClickListener {
         player1_score.text = "8000"
         player2_score.text = "8000"
 
+        db = AppDatabase.getAppDatabase(this.activity!!.applicationContext)
+
+        data = mutableListOf()
+
+
 
     }
 
-    fun addMatch(v:View)
-    {
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        var date = timeStamp.toString()
-        val score1: String = player1_score.text.toString()
-        val score2: String = player2_score.text.toString()
-        if (score1.toInt() <= 0)
-        {
-            winner = player2_text.text.toString()
-        }
-        if(score2.toInt() <= 0)
-        {
-            winner = player1_text.text.toString()
-        }
-
-        var newMatch = Match(0, date, player1, player2, winner)
-
-        db?.getMatchDao()?.insert(newMatch)
-            ?.subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe(
-                {
-                    data?.add(newMatch)
-                    adapter?.notifyItemInserted(data!!.size)
-
-                }
-                ,{}
-            )
-
-    }
 
     override fun onClick(v: View?) {
         when(v!!.id) {
@@ -116,12 +88,47 @@ class GameFragment : Fragment(), View.OnClickListener {
             R.id.dice_roll_btn2 -> navController.navigate(R.id.action_gameFragment_to_diceRollFragment)
             R.id.add_btn -> player1_score.text  = (player1_score.text.toString().toInt() + input_number.text.toString().toInt()).toString()
             R.id.add_btn2 -> player2_score.text  = (player2_score.text.toString().toInt() + input_number.text.toString().toInt()).toString()
-            R.id.subtract_btn -> player1_score.text  = (player1_score.text.toString().toInt() - input_number.text.toString().toInt()).toString()
-            R.id.subtract_btn2 ->  player2_score.text  = (player2_score.text.toString().toInt() - input_number.text.toString().toInt()).toString()
+            R.id.subtract_btn -> {
+                player1_score.text  = (player1_score.text.toString().toInt() - input_number.text.toString().toInt()).toString()
+
+                val score1: String = player1_score.text.toString()
+                if (score1.toInt() <= 0)
+                {
+                    val timeStamp: String = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())
+                    var date = timeStamp.toString()
+                    val winner = player2_text.text.toString()
+
+                    val bundle = Bundle()
+                    bundle.putString("player1", player1)
+                    bundle.putString("player2", player2)
+                    bundle.putString("date", date)
+                    bundle.putString("winner", winner)
+
+                    navController.navigate(R.id.action_gameFragment_to_historyFragment, bundle)
+                }
+            }
+            R.id.subtract_btn2 -> {
+                player2_score.text = (player2_score.text.toString().toInt() - input_number.text.toString()
+                        .toInt()).toString()
+                val score2: String = player2_score.text.toString()
+                if (score2.toInt() <= 0)
+                {
+                    val timeStamp: String = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())
+                    var date = timeStamp.toString()
+                    val winner = player1_text.text.toString()
+
+                    val bundle = Bundle()
+                    bundle.putString("player1", player1)
+                    bundle.putString("player2", player2)
+                    bundle.putString("date", date)
+                    bundle.putString("winner", winner)
+
+                    navController.navigate(R.id.action_gameFragment_to_historyFragment, bundle)
+                }
+            }
             R.id.reset_point_btn -> {
                 player1_score.text = "8000"
                 player2_score.text = "8000"}
-            R.id.test_btn -> addMatch(v)
         }
     }
 }
