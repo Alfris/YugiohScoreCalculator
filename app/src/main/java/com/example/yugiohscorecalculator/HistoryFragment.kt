@@ -1,5 +1,6 @@
 package com.example.yugiohscorecalculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ class HistoryFragment : Fragment() {
     var player2: String = ""
     var winner: String = ""
     var date: String = ""
+    var check=0
 
     var data: MutableList<Match>? = null
 
@@ -34,7 +36,7 @@ class HistoryFragment : Fragment() {
             player2 = arguments!!.getString("player2")!!
             winner = arguments!!.getString("winner")!!
             date = arguments!!.getString("date")!!
-
+            check = 1
         }
 
 
@@ -47,6 +49,7 @@ class HistoryFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
+    @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -56,12 +59,12 @@ class HistoryFragment : Fragment() {
         data = mutableListOf()
 
 
-        listView = view?.findViewById(R.id.match_list);
+        listView = view.findViewById(R.id.match_list)
         listView?.layoutManager = LinearLayoutManager(this.activity)
         adapter = MatchAdapter(data!!)
         listView?.adapter = adapter
 
-        if(player1 != null && player2 != null && date != null && winner != null) {
+        if(check == 1) {
             addMatch(date, player1, player2, winner)
         }
 
@@ -80,11 +83,13 @@ class HistoryFragment : Fragment() {
                 }
                 ,{}
             )
+
     }
 
+    @SuppressLint("CheckResult")
     fun addMatch(date: String, player1: String, player2: String, winner: String)
     {
-        var newMatch = Match(0, date, player1, player2, winner)
+        val newMatch = Match(0, date, player1, player2, winner)
 
         db?.getMatchDao()?.insert(newMatch)
             ?.subscribeOn(Schedulers.io())
