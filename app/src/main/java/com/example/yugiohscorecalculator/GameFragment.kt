@@ -29,11 +29,9 @@ class GameFragment : Fragment(), View.OnClickListener {
     lateinit var navController : NavController
     lateinit var player1: String
     lateinit var player2: String
-
     var winner: String = "None"
 
     var data: MutableList<Match>? = null
-
     var db: AppDatabase? = null
     var adapter: MatchAdapter? = null
 
@@ -65,7 +63,6 @@ class GameFragment : Fragment(), View.OnClickListener {
         view.findViewById<Button>(R.id.add_btn2).setOnClickListener(this)
         view.findViewById<Button>(R.id.subtract_btn).setOnClickListener(this)
         view.findViewById<Button>(R.id.subtract_btn2).setOnClickListener(this)
-        view.findViewById<Button>(R.id.test_btn).setOnClickListener(this)
         view.findViewById<FloatingActionButton>(R.id.reset_point_btn).setOnClickListener(this)
 
         player1_text.text = player1
