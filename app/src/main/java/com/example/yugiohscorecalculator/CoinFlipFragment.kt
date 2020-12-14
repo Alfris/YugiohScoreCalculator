@@ -28,7 +28,6 @@ class CoinFlipFragment : Fragment(),  View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        //view.findViewById<Button>(R.id.toGame).setOnClickListener(this);
         coinImage =  view.findViewById(R.id.coin_image)
         coinImage.setOnClickListener(this)
     }
@@ -56,7 +55,6 @@ class CoinFlipFragment : Fragment(),  View.OnClickListener {
                 }
 
             }
-            //R.id.toGame -> navController.navigate(R.id.action_diceRollFragment_to_gameFragment)
         }
     }
 }
