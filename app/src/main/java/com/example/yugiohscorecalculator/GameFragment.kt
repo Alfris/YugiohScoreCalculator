@@ -1,5 +1,6 @@
 package com.example.yugiohscorecalculator
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -29,7 +30,7 @@ class GameFragment : Fragment(), View.OnClickListener {
     lateinit var player1: String
     lateinit var player2: String
 
-    var winner: String = "None";
+    var winner: String = "None"
 
     var data: MutableList<Match>? = null
 
@@ -52,19 +53,20 @@ class GameFragment : Fragment(), View.OnClickListener {
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view);
-        view.findViewById<Button>(R.id.coin_flip_btn).setOnClickListener(this);
-        view.findViewById<Button>(R.id.dice_roll_btn).setOnClickListener(this);
-        view.findViewById<Button>(R.id.coin_flip_btn2).setOnClickListener(this);
-        view.findViewById<Button>(R.id.dice_roll_btn2).setOnClickListener(this);
-        view.findViewById<Button>(R.id.add_btn).setOnClickListener(this);
-        view.findViewById<Button>(R.id.add_btn2).setOnClickListener(this);
-        view.findViewById<Button>(R.id.subtract_btn).setOnClickListener(this);
-        view.findViewById<Button>(R.id.subtract_btn2).setOnClickListener(this);
-        view.findViewById<Button>(R.id.test_btn).setOnClickListener(this);
-        view.findViewById<FloatingActionButton>(R.id.reset_point_btn).setOnClickListener(this);
+        navController = Navigation.findNavController(view)
+        view.findViewById<Button>(R.id.coin_flip_btn).setOnClickListener(this)
+        view.findViewById<Button>(R.id.dice_roll_btn).setOnClickListener(this)
+        view.findViewById<Button>(R.id.coin_flip_btn2).setOnClickListener(this)
+        view.findViewById<Button>(R.id.dice_roll_btn2).setOnClickListener(this)
+        view.findViewById<Button>(R.id.add_btn).setOnClickListener(this)
+        view.findViewById<Button>(R.id.add_btn2).setOnClickListener(this)
+        view.findViewById<Button>(R.id.subtract_btn).setOnClickListener(this)
+        view.findViewById<Button>(R.id.subtract_btn2).setOnClickListener(this)
+        view.findViewById<Button>(R.id.test_btn).setOnClickListener(this)
+        view.findViewById<FloatingActionButton>(R.id.reset_point_btn).setOnClickListener(this)
 
         player1_text.text = player1
         player2_text.text = player2
@@ -74,12 +76,10 @@ class GameFragment : Fragment(), View.OnClickListener {
         db = AppDatabase.getAppDatabase(this.activity!!.applicationContext)
 
         data = mutableListOf()
-
-
-
     }
 
 
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onClick(v: View?) {
         when(v!!.id) {
             R.id.coin_flip_btn -> navController.navigate(R.id.action_gameFragment_to_coinFlipFragment)
@@ -95,7 +95,7 @@ class GameFragment : Fragment(), View.OnClickListener {
                 if (score1.toInt() <= 0)
                 {
                     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())
-                    var date = timeStamp.toString()
+                    val date = timeStamp
                     val winner = player2_text.text.toString()
 
                     val bundle = Bundle()
@@ -114,7 +114,7 @@ class GameFragment : Fragment(), View.OnClickListener {
                 if (score2.toInt() <= 0)
                 {
                     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())
-                    var date = timeStamp.toString()
+                    val date = timeStamp
                     val winner = player1_text.text.toString()
 
                     val bundle = Bundle()
